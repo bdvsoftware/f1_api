@@ -15,7 +15,7 @@ public class Circuit {
     
     @Id
     @Column(name = "circuitId")
-    private Short circuitId;
+    private Integer circuitId;
     
     @Column(name = "circuitRef")
     private String circuitRef;

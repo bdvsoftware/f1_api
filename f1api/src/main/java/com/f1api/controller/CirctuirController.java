@@ -10,17 +10,18 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
-@RestController("/api/circuits")
+@RestController
+@RequestMapping("/api/circuits")
 @RequiredArgsConstructor
 public class CirctuirController {
 
     private final CircuitService circuitService;
 
     @GetMapping("/all")
-    public List<Circuit> getMethodName(@RequestParam String param) {
+    public List<Circuit> getAllCIrcuits() {
         return circuitService.getAll();
     }
     
