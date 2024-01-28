@@ -14,10 +14,9 @@ import lombok.Setter;
 public class Circuit {
     
     @Id
-    @Column(name = "circuitId")
-    private Integer circuitId;
+    private Integer id;
     
-    @Column(name = "circuitRef")
+    @Column(name = "circuit_ref")
     private String circuitRef;
 
     @Column(name = "name")
