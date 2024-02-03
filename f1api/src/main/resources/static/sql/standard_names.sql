@@ -120,4 +120,15 @@ ALTER TABLE sprint_results
   CHANGE statusId       status_id          int NULL;
 
 ALTER TABLE status
-  CHANGE statusId       status_id          int NOT NULL,
+  CHANGE statusId       status_id          int NOT NULL;
+
+ALTER TABLE drivers
+  CHANGE driverId    driver_id    int NOT NULL,
+  CHANGE driverRef   driver_ref   varchar(255) NULL,
+  CHANGE number      number       float NULL,
+  CHANGE code        code         varchar(255) NULL,
+  CHANGE forename    forename      varchar(255) NULL,
+  CHANGE surname     surname      varchar(255) NULL,
+  CHANGE dob         dob          date NULL,
+  CHANGE nationality nationality  varchar(255) NULL,
+  CHANGE url         url          varchar(255) NULL;
