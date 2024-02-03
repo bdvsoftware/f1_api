@@ -2,6 +2,9 @@ ALTER TABLE drivers
   CHANGE driverId    driver_id    int          NOT NULL,
   CHANGE driverRef   driver_ref   varchar(255) NULL:
 
+ALTER TABLE circuits
+  CHANGE id    circuit_id    int          NOT NULL;
+
 ALTER TABLE constructor_results
   CHANGE constructorResultsId constructor_results_id int NOT NULL,
   CHANGE raceId               race_id               int NOT NULL,
