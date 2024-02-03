@@ -14,6 +14,7 @@ import lombok.Setter;
 public class Circuit {
     
     @Id
+    @Column(name = "circuit_id")
     private Integer id;
     
     @Column(name = "circuit_ref")
