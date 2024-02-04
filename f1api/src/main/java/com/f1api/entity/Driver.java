@@ -6,6 +6,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Entity
@@ -15,13 +17,13 @@ public class Driver {
 
     @Id
     @Column(name = "driver_id")
-    private Integer driverId;
+    private Short driverId;
 
     @Column(name = "driver_ref")
     private String driverRef;
 
     @Column(name = "number")
-    private Double number;
+    private Short number;
 
     @Column(name = "code")
     private String code;
@@ -32,7 +34,8 @@ public class Driver {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "dob")
+    @Temporal(TemporalType.DATE)
+    @Column(name = "dob", columnDefinition = "DATE")
     private Date dob;
 
     @Column(name = "nationality")
