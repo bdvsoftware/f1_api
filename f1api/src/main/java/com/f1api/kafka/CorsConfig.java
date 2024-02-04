@@ -1,4 +1,4 @@
-package com.f1api.config;
+package com.f1api.kafka;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

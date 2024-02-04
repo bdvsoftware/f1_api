@@ -1,4 +1,4 @@
-package com.f1api.config.kafka.producer;
+package com.f1api.kafka.config.producer;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

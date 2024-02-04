@@ -14,5 +14,6 @@
             "database": "f1",
             "username": "root"
         }
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

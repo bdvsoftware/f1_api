@@ -1,4 +1,4 @@
-package com.f1api.config.kafka.consumer;
+package com.f1api.kafka.config.consumer;
 
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
