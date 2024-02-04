@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.f1api.entity.Driver;
 
 @Repository
-public interface DriverRepository extends JpaRepository<Driver, Integer>{
+public interface DriverRepository extends JpaRepository<Driver, Short>{
 
     
 }
