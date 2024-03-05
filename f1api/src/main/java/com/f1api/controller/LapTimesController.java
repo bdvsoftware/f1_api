@@ -17,7 +17,7 @@ public class LapTimesController {
 
     private final LapTimeService lapTimeService;
     
-    @GetMapping("lapsDriverRace")
+    @GetMapping("laps-driver-race")
     public LapTimesDriverRaceDTO getLapTimesDriverRace(@RequestParam(name = "driverId") Short driverId, @RequestParam(name = "raceId") Short raceId){
         return this.lapTimeService.getLapTimesDriverRace(driverId, raceId);
     }
