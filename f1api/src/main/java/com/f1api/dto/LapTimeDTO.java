@@ -11,7 +11,7 @@ public class LapTimeDTO {
 
     private Short driverId;
 
-    private Short raceId;
+    private Long raceId;
 
     private Short lap;
 

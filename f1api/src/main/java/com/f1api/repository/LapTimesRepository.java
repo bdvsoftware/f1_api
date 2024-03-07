@@ -17,5 +17,5 @@ public interface LapTimesRepository extends JpaRepository<LapTime, Long>{
         +" inner join lt.driver d"
         +" where r.raceId = :raceId and d.driverId = :driverId"
     )
-    public List<LapTimeDTO> findLapTimerDriverRace(@Param("driverId") Short driverId, @Param("raceId") Short raceId);
+    public List<LapTimeDTO> findLapTimerDriverRace(@Param("driverId") Short driverId, @Param("raceId") Long raceId);
 }

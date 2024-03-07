@@ -9,7 +9,13 @@ public class LapTimesDriverRaceDTO {
     
     private Short driverId;
 
-    private Short raceId;
+    private String driverName;
+
+    private Long raceId;
+
+    private String gp;
+
+    private Integer year;
 
     private List<LapTimeDTO> lapTimes;
 }

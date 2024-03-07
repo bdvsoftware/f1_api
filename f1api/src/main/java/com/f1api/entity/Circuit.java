@@ -13,7 +13,7 @@ public class Circuit {
     
     @Id
     @Column(name = "circuit_id")
-    private Integer id;
+    private Long id;
     
     @Column(name = "circuit_ref")
     private String circuitRef;
