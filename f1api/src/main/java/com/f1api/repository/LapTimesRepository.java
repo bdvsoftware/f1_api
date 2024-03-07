@@ -11,7 +11,7 @@ import com.f1api.entity.LapTime;
 
 public interface LapTimesRepository extends JpaRepository<LapTime, Long>{
     @Query("select new com.f1api.dto.LapTimeDTO("
-        +" lt.lapTimeId, lt.driver.driverId, lt.race.raceId, lt.lap, lt.position, lt.time, lt.milliseconds)"
+        +" lt.lapTimeId, lt.lap, lt.position, lt.time, lt.milliseconds)"
         +" from LapTime lt"
         +" inner join lt.race r"
         +" inner join lt.driver d"

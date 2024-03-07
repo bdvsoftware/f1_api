@@ -9,10 +9,6 @@ public class LapTimeDTO {
    
     private Long lapTimeId;
 
-    private Short driverId;
-
-    private Long raceId;
-
     private Short lap;
 
     private Short position;
