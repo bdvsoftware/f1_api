@@ -1,9 +1,11 @@
 package com.f1api.service;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.f1api.dto.GraphicDTO;
 import com.f1api.dto.LapTimesDriverRaceDTO;
 import com.f1api.kafka.producer.laptime.LapTimesDriverRaceRequestEvent;
 import com.f1api.repository.DriverRepository;
@@ -32,31 +34,39 @@ public class LapTimeService {
     private static final String GRAPHIC_SERVICE_URL = "http://localhost:5000/generate-graphic";
 
     @Transactional
-    public String getLapTimesDriverRace(Short driverId, Long raceId){
-        LapTimesDriverRaceDTO lapTimesDriverRaceDTO = new LapTimesDriverRaceDTO();
-        Driver driverData = this.driverRepository.findById(driverId).get();
-        lapTimesDriverRaceDTO.setDriverId(driverId);
-        lapTimesDriverRaceDTO.setDriverName(driverData.getForename()+" "+driverData.getSurname());
-        
+    public List<LapTimesDriverRaceDTO> getLapTimesDriverRace(Short[] driverIds, Long raceId){
+        List<LapTimesDriverRaceDTO> lapTimesDriverRaceDTOs = new ArrayList<>();
+
         Race raceData = this.raceRepository.findById(raceId).get();
-        lapTimesDriverRaceDTO.setRaceId(raceId);
-        lapTimesDriverRaceDTO.setGp(raceData.getName());
-        lapTimesDriverRaceDTO.setYear(raceData.getYear());
-        lapTimesDriverRaceDTO.setLapTimes(this.lapTimesRepository.findLapTimerDriverRace(driverId, raceId));
+
+        for(Short driverId : driverIds){
+            LapTimesDriverRaceDTO lapTimesDriverRaceDTO = new LapTimesDriverRaceDTO();
+            Driver driverData = this.driverRepository.findById(driverId).get();
+            lapTimesDriverRaceDTO.setDriverId(driverId);
+            lapTimesDriverRaceDTO.setDriverName(driverData.getForename()+" "+driverData.getSurname());
+
+            lapTimesDriverRaceDTO.setRaceId(raceId);
+            lapTimesDriverRaceDTO.setGp(raceData.getName());
+            lapTimesDriverRaceDTO.setYear(raceData.getYear());
+            lapTimesDriverRaceDTO.setLapTimes(this.lapTimesRepository.findLapTimerDriverRace(driverId, raceId));
+
+            lapTimesDriverRaceDTOs.add(lapTimesDriverRaceDTO);
+        }
 
         WebClient webClient = WebClient.create();
 
         String img = webClient.post()
                 .uri(GRAPHIC_SERVICE_URL)
-                .body(BodyInserters.fromValue(lapTimesDriverRaceDTO))
+                .body(BodyInserters.fromValue(lapTimesDriverRaceDTOs))
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
 
-        this.base64Service.decodeAndSaveImage(img, driverData.getForename()+driverData.getSurname(), raceData.getName(), raceData.getYear());
+        this.base64Service.decodeAndSaveImage(img, raceData.getName(), raceData.getYear());
 
-        this.lapTimesDriverRaceRequestEvent.sendMessage(lapTimesDriverRaceDTO);
-        return img;
+        this.lapTimesDriverRaceRequestEvent.sendMessage(lapTimesDriverRaceDTOs);
+
+        return lapTimesDriverRaceDTOs;
     }
 
 }

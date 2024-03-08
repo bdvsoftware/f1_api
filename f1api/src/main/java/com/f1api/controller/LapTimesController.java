@@ -1,5 +1,7 @@
 package com.f1api.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +20,7 @@ public class LapTimesController {
     private final LapTimeService lapTimeService;
     
     @GetMapping("laps-driver-race")
-    public String getLapTimesDriverRace(@RequestParam(name = "driverId") Short driverId, @RequestParam(name = "raceId") Long raceId){
+    public List<LapTimesDriverRaceDTO> getLapTimesDriverRace(@RequestParam(name = "driverId") Short[] driverId, @RequestParam(name = "raceId") Long raceId){
         return this.lapTimeService.getLapTimesDriverRace(driverId, raceId);
     }
 }
