@@ -11,8 +11,10 @@ import com.f1api.kafka.producer.laptime.LapTimesDriverRaceRequestEvent;
 import com.f1api.repository.DriverRepository;
 import com.f1api.repository.LapTimesRepository;
 import com.f1api.repository.RaceRepository;
+import com.f1api.repository.mongo.LapTimeDriverMongoRepository;
 import com.f1api.entity.Driver;
 import com.f1api.entity.Race;
+import com.f1api.entity.mongo.LapTimeDriverMongo;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +30,8 @@ public class LapTimeService {
     private final RaceRepository raceRepository;
 
     private final LapTimesDriverRaceRequestEvent lapTimesDriverRaceRequestEvent;
+
+    private final LapTimeDriverMongoRepository lapTimeDriverMongoRepository;
 
     private final Base64Service base64Service;
 
@@ -66,7 +70,11 @@ public class LapTimeService {
 
         this.lapTimesDriverRaceRequestEvent.sendMessage(lapTimesDriverRaceDTOs);
 
+        this.lapTimeDriverMongoRepository.sa
+
         return lapTimesDriverRaceDTOs;
     }
+
+    private List<LapTimeDriverMongo> toMongo
 
 }
