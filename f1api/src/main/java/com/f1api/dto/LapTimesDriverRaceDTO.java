@@ -23,12 +23,12 @@ public class LapTimesDriverRaceDTO {
 
     private List<LapTimeDTO> lapTimes;
 
-    public List<LapTimeDriverMongo> toRecord(List<LapTimesDriverRaceDTO> list){
-        return list.stream().map(item -> convertToMongo(item)).collect(Collectors.toList());
+    public static List<LapTimeDriverMongo> toRecord(List<LapTimesDriverRaceDTO> list){
+        return list.stream().map(item -> LapTimesDriverRaceDTO.convertToMongo(item)).collect(Collectors.toList());
     }
     
-    public LapTimeDriverMongo convertToMongo(LapTimesDriverRaceDTO item){
-        LapTimeDriverMongo lapTimeDriverMongo = new LapTimeDriverMongo(item.getRaceId(), item.driverName, item.raceId, item.gp, item.getDriverId(), LapTimeDTO.toRecord(item.getLapTimes()));
+    public static LapTimeDriverMongo convertToMongo(LapTimesDriverRaceDTO item){
+        return new LapTimeDriverMongo(item.getRaceId(), item.driverName, item.raceId, item.gp, item.getDriverId(), LapTimeDTO.toRecord(item.getLapTimes()));
     }
 }
 

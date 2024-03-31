@@ -70,11 +70,13 @@ public class LapTimeService {
 
         this.lapTimesDriverRaceRequestEvent.sendMessage(lapTimesDriverRaceDTOs);
 
-        this.lapTimeDriverMongoRepository.sa
+        this.lapTimeDriverMongoRepository.saveAll(this.toMongo(lapTimesDriverRaceDTOs));
 
         return lapTimesDriverRaceDTOs;
     }
 
-    private List<LapTimeDriverMongo> toMongo
+    private List<LapTimeDriverMongo> toMongo(List<LapTimesDriverRaceDTO> lapTimes){
+        return LapTimesDriverRaceDTO.toRecord(lapTimes);
+    }
 
 }

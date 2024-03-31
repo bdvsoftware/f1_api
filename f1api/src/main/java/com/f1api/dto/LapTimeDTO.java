@@ -22,13 +22,13 @@ public class LapTimeDTO {
 
     private Long milliseconds;
 
-    public List<LapTimeMongo> toRecord(List<LapTimeDTO> list){
+    public static List<LapTimeMongo> toRecord(List<LapTimeDTO> list){
         return list.stream()
-        .map(item -> converToMongo(item))
+        .map(item -> LapTimeDTO.converToMongo(item))
         .collect(Collectors.toList());
     }
 
-    public LapTimeMongo converToMongo(LapTimeDTO item){
+    public static LapTimeMongo converToMongo(LapTimeDTO item){
         return new LapTimeMongo(item.lapTimeId, item.lap, item.position, item.time, item.milliseconds); 
     }
 }
