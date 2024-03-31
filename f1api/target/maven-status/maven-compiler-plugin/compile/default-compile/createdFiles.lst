@@ -21,12 +21,12 @@ com/f1api/service/LapTimeService.class
 com/f1api/entity/mongo/LapTimeDriverMongo.class
 com/f1api/kafka/config/producer/KafkaTemplateConfig.class
 META-INF/spring-configuration-metadata.json
-com/f1api/dto/RaceDTO.class
 com/f1api/entity/Driver.class
 com/f1api/entity/Circuit.class
+com/f1api/dto/RaceDTO.class
 com/f1api/repository/RaceRepository.class
-com/f1api/kafka/config/consumer/ConsumerFactoryConfig.class
 com/f1api/kafka/CorsConfig.class
+com/f1api/kafka/config/consumer/ConsumerFactoryConfig.class
 com/f1api/dto/LapTimesDriverRaceDTO.class
 com/f1api/repository/LapTimesRepository.class
 com/f1api/service/CircuitService.class
