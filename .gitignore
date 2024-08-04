@@ -2,3 +2,4 @@
 .vscode
 .gitignore
 *.jar
+*.lst

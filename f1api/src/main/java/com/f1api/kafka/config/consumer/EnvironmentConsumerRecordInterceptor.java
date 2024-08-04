@@ -21,12 +21,12 @@ public class EnvironmentConsumerRecordInterceptor implements RecordInterceptor<S
     public ConsumerRecord<String, Object> intercept(
             ConsumerRecord<String, Object> consumerRecord,
             Consumer<String, Object> consumer) {
-        var headers = consumerRecord.headers();
+        /*var headers = consumerRecord.headers();
         var envValue = StreamSupport.stream(headers.spliterator(), false)
                 .filter(header -> header.key().equals(ENVIRONMENT_HEADER))
                 .findFirst()
-                .orElse(null);
+                .orElse(null);*/
 
-        return envValue == null || !new String(envValue.value()).equals(environment) ? null : consumerRecord;
+        return /*envValue == null || !new String(envValue.value()).equals(environment) ? null :*/ consumerRecord;
     }
 }
