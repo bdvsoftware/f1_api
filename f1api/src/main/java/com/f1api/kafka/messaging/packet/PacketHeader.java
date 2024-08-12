@@ -1,5 +1,6 @@
 package com.f1api.kafka.messaging.packet;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -10,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class PacketHeader {
+public class PacketHeader implements Serializable{
     private Integer m_packetFormat; 
     private Integer m_gameYear;  
     private Integer m_gameMajorVersion;
