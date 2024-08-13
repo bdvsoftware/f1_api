@@ -15,15 +15,15 @@ import lombok.Setter;
 @NoArgsConstructor
 public class PacketHeader implements Serializable{
     private Integer m_packetFormat; 
-    private Integer m_gameYear;  
-    private Integer m_gameMajorVersion;
-    private Integer m_gameMinorVersion;
-    private Integer m_packetVersion; 
-    private Integer m_packetId; 
+    private Short m_gameYear;  
+    private BigDecimal m_gameMajorVersion;
+    private BigDecimal m_gameMinorVersion;
+    private Short m_packetVersion; 
+    private Short m_packetId; 
     private BigInteger m_sessionUID;
     private BigDecimal m_sessionTime;
     private BigInteger m_frameIdentifier; 
     private BigInteger m_overallFrameIdentifier; 
-    private Integer m_playerCarIndex; 
-    private Integer m_secondaryPlayerCarIndex;
+    private BigInteger m_playerCarIndex; 
+    private BigInteger m_secondaryPlayerCarIndex;
 }

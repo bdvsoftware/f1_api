@@ -34,6 +34,7 @@ com\f1api\controller\CirctuirController.class
 com\f1api\service\LapTimeService.class
 com\f1api\kafka\messaging\packet\PacketHeader.class
 com\f1api\entity\mongo\packet\lapdata\LapDataEntity.class
+com\f1api\repository\mongo\packet\PacketLapDataMongoRepository.class
 com\f1api\service\Base64Service.class
 com\f1api\entity\Circuit.class
 com\f1api\repository\RaceRepository.class

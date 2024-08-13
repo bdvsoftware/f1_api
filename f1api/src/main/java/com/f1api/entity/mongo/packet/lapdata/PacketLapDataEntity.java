@@ -1,16 +1,19 @@
 package com.f1api.entity.mongo.packet.lapdata;
 
+import java.math.BigInteger;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import com.f1api.entity.mongo.packet.PacketHeaderEntity;
-
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Document("packet_lap_data")
 public record PacketLapDataEntity (
-    @Id @GeneratedValue(strategy=GenerationType.AUTO) Long id,
+    @Id UUID id,
     PacketHeaderEntity packetHeaderEntity,
-    LapDataEntity lapData
+    List<LapDataEntity> lapData,
+    BigInteger m_timeTrialPBCarIdx,
+    BigInteger m_timeTrialRivalCarIdx,
+    LocalDateTime createdAt
 ){}

@@ -25,7 +25,12 @@ public class PacketLapDataEventConsumer {
 
     @KafkaListener(topics = TOPIC)
     public void consumeMessage(ConsumerRecord<String, Object> data) throws JsonProcessingException{
-        String json = mapper.writeValueAsString(data.value());
-        PacketLapData packet = mapper.readValue(json , PacketLapData.class);
+        try{
+            String json = mapper.writeValueAsString(data.value());
+            PacketLapData packet = mapper.readValue(json , PacketLapData.class);
+            service.process(packet);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

@@ -17,12 +17,12 @@ public class LapData implements Serializable{
 
     private BigInteger m_lastLapTimeInMS; // uint32 -> BigInteger
     private BigInteger m_currentLapTimeInMS; // uint32 -> BigInteger
-    private Integer m_sector1TimeInMS; // uint16 -> Integer
-    private Integer m_sector1TimeMinutes; // uint8 -> Integer
-    private Integer m_sector2TimeInMS; // uint16 -> Integer
-    private Integer m_sector2TimeMinutes; // uint8 -> Integer
-    private Integer m_deltaToCarInFrontInMS; // uint16 -> Integer
-    private Integer m_deltaToRaceLeaderInMS; // uint16 -> Integer
+    private BigInteger m_sector1TimeInMS; // uint16 -> Integer
+    private Short m_sector1TimeMinutes; // uint8 -> Integer
+    private BigInteger m_sector2TimeInMS; // uint16 -> Integer
+    private Short m_sector2TimeMinutes; // uint8 -> Integer
+    private BigInteger m_deltaToCarInFrontInMS; // uint16 -> Integer
+    private BigInteger m_deltaToRaceLeaderInMS; // uint16 -> Integer
     private BigDecimal m_lapDistance; // float -> BigDecimal
     private BigDecimal m_totalDistance; // float -> BigDecimal
     private BigDecimal m_safetyCarDelta; // float -> BigDecimal
@@ -31,7 +31,7 @@ public class LapData implements Serializable{
     private Integer m_pitStatus; // uint8 -> Integer
     private Integer m_numPitStops; // uint8 -> Integer
     private Integer m_sector; // uint8 -> Integer
-    private Integer m_currentLapInvalid; // uint8 -> Integer
+    private Boolean m_currentLapInvalid; // uint8 -> Integer
     private Integer m_penalties; // uint8 -> Integer
     private Integer m_totalWarnings; // uint8 -> Integer
     private Integer m_cornerCuttingWarnings; // uint8 -> Integer
@@ -41,9 +41,7 @@ public class LapData implements Serializable{
     private Integer m_driverStatus; // uint8 -> Integer
     private Integer m_resultStatus; // uint8 -> Integer
     private Integer m_pitLaneTimerActive; // uint8 -> Integer
-    private Integer m_pitLaneTimeInLaneInMS; // uint16 -> Integer
-    private Integer m_pitStopTimerInMS; // uint16 -> Integer
+    private BigInteger m_pitLaneTimeInLaneInMS; // uint16 -> Integer
+    private BigInteger m_pitStopTimerInMS; // uint16 -> Integer
     private Integer m_pitStopShouldServePen; // uint8 -> Integer
-
-
 }
