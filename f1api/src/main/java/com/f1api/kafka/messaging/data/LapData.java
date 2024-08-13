@@ -6,11 +6,13 @@ import java.math.BigInteger;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class LapData implements Serializable{
 
     private BigInteger m_lastLapTimeInMS; // uint32 -> BigInteger
@@ -42,4 +44,6 @@ public class LapData implements Serializable{
     private Integer m_pitLaneTimeInLaneInMS; // uint16 -> Integer
     private Integer m_pitStopTimerInMS; // uint16 -> Integer
     private Integer m_pitStopShouldServePen; // uint8 -> Integer
+
+
 }
