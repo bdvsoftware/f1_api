@@ -18,9 +18,9 @@ public class LapData implements Serializable{
     private BigInteger m_lastLapTimeInMS; // uint32 -> BigInteger
     private BigInteger m_currentLapTimeInMS; // uint32 -> BigInteger
     private BigInteger m_sector1TimeInMS; // uint16 -> Integer
-    private Short m_sector1TimeMinutes; // uint8 -> Integer
+    private Integer m_sector1TimeMinutes; // uint8 -> Integer
     private BigInteger m_sector2TimeInMS; // uint16 -> Integer
-    private Short m_sector2TimeMinutes; // uint8 -> Integer
+    private Integer m_sector2TimeMinutes; // uint8 -> Integer
     private BigInteger m_deltaToCarInFrontInMS; // uint16 -> Integer
     private BigInteger m_deltaToRaceLeaderInMS; // uint16 -> Integer
     private BigDecimal m_lapDistance; // float -> BigDecimal
