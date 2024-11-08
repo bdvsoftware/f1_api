@@ -1,4 +1,4 @@
-package com.f1api.kafka.messaging.packet;
+package com.f1api.kafka.messaging.packet.types;
 
 import java.io.Serializable;
 import java.math.BigInteger;

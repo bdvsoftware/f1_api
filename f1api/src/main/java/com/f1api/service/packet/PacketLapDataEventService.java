@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.f1api.entity.mongo.packet.PacketHeaderEntity;
 import com.f1api.entity.mongo.packet.lapdata.LapDataEntity;
 import com.f1api.entity.mongo.packet.lapdata.PacketLapDataEntity;
-import com.f1api.kafka.messaging.packet.PacketLapData;
+import com.f1api.kafka.messaging.packet.types.PacketLapData;
 import com.f1api.repository.mongo.packet.PacketLapDataMongoRepository;
 
 import lombok.RequiredArgsConstructor;
