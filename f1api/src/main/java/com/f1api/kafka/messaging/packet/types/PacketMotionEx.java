@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import com.f1api.domain.Corner;
+import com.f1api.domain.CarCorner;
 import com.f1api.kafka.messaging.packet.master.Packet;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -21,31 +21,31 @@ public class PacketMotionEx implements Packet{
     private PacketHeader packetHeader;
 
     @JsonProperty("m_suspensionPosition")
-    private Corner suspensionPosition;
+    private CarCorner suspensionPosition;
 
     @JsonProperty("m_suspensionVelocity")
-    private Corner suspensionVelocity;
+    private CarCorner suspensionVelocity;
 
     @JsonProperty("m_suspensionAcceleration")
-    private Corner suspensionAcceleration;
+    private CarCorner suspensionAcceleration;
 
     @JsonProperty("m_wheelSpeed")
-    private Corner wheelSpeed;
+    private CarCorner wheelSpeed;
 
     @JsonProperty("m_wheelSlipRatio")
-    private Corner wheelSlipRatio;
+    private CarCorner wheelSlipRatio;
 
     @JsonProperty("m_wheelSlipAngle")
-    private Corner wheelSlipAngle;
+    private CarCorner wheelSlipAngle;
 
     @JsonProperty("m_wheelLatForce")
-    private Corner wheelLatForce;
+    private CarCorner wheelLatForce;
 
     @JsonProperty("m_wheelLongForce")
-    private Corner wheelLongForce;
+    private CarCorner wheelLongForce;
 
     @JsonProperty("m_wheelVertForce")
-    private Corner wheelVertForce;
+    private CarCorner wheelVertForce;
 
     @JsonProperty("m_heightOfCOGAboveGround")
     private BigDecimal heightOfCOGAboveGround;

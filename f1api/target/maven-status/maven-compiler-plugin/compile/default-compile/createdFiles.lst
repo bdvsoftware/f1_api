@@ -33,6 +33,7 @@ com\f1api\kafka\messaging\packet\PacketReceived.class
 com\f1api\controller\LapTimesController.class
 com\f1api\entity\mongo\packet\PacketHeaderEntity.class
 com\f1api\kafka\config\producer\EnvironmentHeaderProducerInterceptor.class
+com\f1api\util\Constants$CornerSides.class
 com\f1api\util\Constants.class
 com\f1api\entity\mongo\packet\lapdata\PacketLapDataEntity.class
 com\f1api\kafka\messaging\packet\master\Packet.class
