@@ -5,7 +5,6 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 import com.f1api.kafka.messaging.packet.PacketReceived;
-import com.f1api.kafka.messaging.packet.types.PacketLapData;
 import com.f1api.service.packet.PacketLapDataEventService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

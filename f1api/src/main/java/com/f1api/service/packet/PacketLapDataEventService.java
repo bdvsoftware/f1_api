@@ -20,7 +20,7 @@ public class PacketLapDataEventService {
 
     private final PacketLapDataMongoRepository repository;
 
-    public void process(PacketLapData data){
+    /*public void process(PacketLapData data){
         var packetHeaderEntity = createPacketHeaderEntity(data);
 
         var lapTimesEntities = createPacketLapDataEntity(data);
@@ -93,5 +93,5 @@ public class PacketLapDataEventService {
                     lapData.getM_pitStopShouldServePen() :
                     null
         )).toList();
-    }
+    }*/
 }

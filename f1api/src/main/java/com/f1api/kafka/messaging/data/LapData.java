@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,34 +16,91 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LapData implements Serializable{
-
-    private BigInteger m_lastLapTimeInMS; // uint32 -> BigInteger
-    private BigInteger m_currentLapTimeInMS; // uint32 -> BigInteger
-    private BigInteger m_sector1TimeInMS; // uint16 -> Integer
-    private Integer m_sector1TimeMinutes; // uint8 -> Integer
-    private BigInteger m_sector2TimeInMS; // uint16 -> Integer
-    private Integer m_sector2TimeMinutes; // uint8 -> Integer
-    private BigInteger m_deltaToCarInFrontInMS; // uint16 -> Integer
-    private BigInteger m_deltaToRaceLeaderInMS; // uint16 -> Integer
-    private BigDecimal m_lapDistance; // float -> BigDecimal
-    private BigDecimal m_totalDistance; // float -> BigDecimal
-    private BigDecimal m_safetyCarDelta; // float -> BigDecimal
-    private Integer m_carPosition; // uint8 -> Integer
-    private Integer m_currentLapNum; // uint8 -> Integer
-    private Integer m_pitStatus; // uint8 -> Integer
-    private Integer m_numPitStops; // uint8 -> Integer
-    private Integer m_sector; // uint8 -> Integer
-    private Boolean m_currentLapInvalid; // uint8 -> Integer
-    private Integer m_penalties; // uint8 -> Integer
-    private Integer m_totalWarnings; // uint8 -> Integer
-    private Integer m_cornerCuttingWarnings; // uint8 -> Integer
-    private Integer m_numUnservedDriveThroughPens; // uint8 -> Integer
-    private Integer m_numUnservedStopGoPens; // uint8 -> Integer
-    private Integer m_gridPosition; // uint8 -> Integer
-    private Integer m_driverStatus; // uint8 -> Integer
-    private Integer m_resultStatus; // uint8 -> Integer
-    private Integer m_pitLaneTimerActive; // uint8 -> Integer
-    private BigInteger m_pitLaneTimeInLaneInMS; // uint16 -> Integer
-    private BigInteger m_pitStopTimerInMS; // uint16 -> Integer
-    private Integer m_pitStopShouldServePen; // uint8 -> Integer
+    
+        @JsonProperty("m_lastLapTimeInMS")
+        private BigInteger lastLapTimeInMS;
+    
+        @JsonProperty("m_currentLapTimeInMS")
+        private BigInteger currentLapTimeInMS;
+    
+        @JsonProperty("m_sector1TimeInMS")
+        private BigInteger sector1TimeInMS;
+    
+        @JsonProperty("m_sector1TimeMinutes")
+        private Integer sector1TimeMinutes;
+    
+        @JsonProperty("m_sector2TimeInMS")
+        private BigInteger sector2TimeInMS;
+    
+        @JsonProperty("m_sector2TimeMinutes")
+        private Integer sector2TimeMinutes;
+    
+        @JsonProperty("m_deltaToCarInFrontInMS")
+        private BigInteger deltaToCarInFrontInMS;
+    
+        @JsonProperty("m_deltaToRaceLeaderInMS")
+        private BigInteger deltaToRaceLeaderInMS;
+    
+        @JsonProperty("m_lapDistance")
+        private BigDecimal lapDistance;
+    
+        @JsonProperty("m_totalDistance")
+        private BigDecimal totalDistance;
+    
+        @JsonProperty("m_safetyCarDelta")
+        private BigDecimal safetyCarDelta;
+    
+        @JsonProperty("m_carPosition")
+        private Integer carPosition;
+    
+        @JsonProperty("m_currentLapNum")
+        private Integer currentLapNum;
+    
+        @JsonProperty("m_pitStatus")
+        private Integer pitStatus;
+    
+        @JsonProperty("m_numPitStops")
+        private Integer numPitStops;
+    
+        @JsonProperty("m_sector")
+        private Integer sector;
+    
+        @JsonProperty("m_currentLapInvalid")
+        private Boolean currentLapInvalid;
+    
+        @JsonProperty("m_penalties")
+        private Integer penalties;
+    
+        @JsonProperty("m_totalWarnings")
+        private Integer totalWarnings;
+    
+        @JsonProperty("m_cornerCuttingWarnings")
+        private Integer cornerCuttingWarnings;
+    
+        @JsonProperty("m_numUnservedDriveThroughPens")
+        private Integer numUnservedDriveThroughPens;
+    
+        @JsonProperty("m_numUnservedStopGoPens")
+        private Integer numUnservedStopGoPens;
+    
+        @JsonProperty("m_gridPosition")
+        private Integer gridPosition;
+    
+        @JsonProperty("m_driverStatus")
+        private Integer driverStatus;
+    
+        @JsonProperty("m_resultStatus")
+        private Integer resultStatus;
+    
+        @JsonProperty("m_pitLaneTimerActive")
+        private Integer pitLaneTimerActive;
+    
+        @JsonProperty("m_pitLaneTimeInLaneInMS")
+        private BigInteger pitLaneTimeInLaneInMS;
+    
+        @JsonProperty("m_pitStopTimerInMS")
+        private BigInteger pitStopTimerInMS;
+    
+        @JsonProperty("m_pitStopShouldServePen")
+        private Integer pitStopShouldServePen;    
 }

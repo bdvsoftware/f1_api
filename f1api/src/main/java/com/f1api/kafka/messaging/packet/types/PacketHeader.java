@@ -3,7 +3,7 @@ package com.f1api.kafka.messaging.packet.types;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,16 +14,40 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PacketHeader implements Serializable{
-    private Integer m_packetFormat; 
-    private Short m_gameYear;  
-    private BigDecimal m_gameMajorVersion;
-    private BigDecimal m_gameMinorVersion;
-    private Short m_packetVersion; 
-    private Short m_packetId; 
-    private BigInteger m_sessionUID;
-    private BigDecimal m_sessionTime;
-    private BigInteger m_frameIdentifier; 
-    private BigInteger m_overallFrameIdentifier; 
-    private BigInteger m_playerCarIndex; 
-    private BigInteger m_secondaryPlayerCarIndex;
+    
+    @JsonProperty("m_packetFormat")
+    private Integer packetFormat;
+
+    @JsonProperty("m_gameYear")
+    private Short gameYear;
+
+    @JsonProperty("m_gameMajorVersion")
+    private BigDecimal gameMajorVersion;
+
+    @JsonProperty("m_gameMinorVersion")
+    private BigDecimal gameMinorVersion;
+
+    @JsonProperty("m_packetVersion")
+    private Short packetVersion;
+
+    @JsonProperty("m_packetId")
+    private Short packetId;
+
+    @JsonProperty("m_sessionUID")
+    private BigInteger sessionUID;
+
+    @JsonProperty("m_sessionTime")
+    private BigDecimal sessionTime;
+
+    @JsonProperty("m_frameIdentifier")
+    private BigInteger frameIdentifier;
+
+    @JsonProperty("m_overallFrameIdentifier")
+    private BigInteger overallFrameIdentifier;
+
+    @JsonProperty("m_playerCarIndex")
+    private BigInteger playerCarIndex;
+
+    @JsonProperty("m_secondaryPlayerCarIndex")
+    private BigInteger secondaryPlayerCarIndex;
 }
