@@ -13,7 +13,7 @@ public record PacketLapDataEntity (
     @Id UUID id,
     PacketHeaderEntity packetHeaderEntity,
     List<LapDataEntity> lapData,
-    BigInteger m_timeTrialPBCarIdx,
-    BigInteger m_timeTrialRivalCarIdx,
+    BigInteger timeTrialPBCarIdx,
+    BigInteger timeTrialRivalCarIdx,
     LocalDateTime createdAt
 ){}

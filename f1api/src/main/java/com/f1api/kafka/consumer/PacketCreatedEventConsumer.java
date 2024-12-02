@@ -5,7 +5,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 import com.f1api.kafka.messaging.packet.PacketReceived;
-import com.f1api.service.packet.PacketLapDataEventService;
+import com.f1api.service.packet.PacketService;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,7 +20,7 @@ public class PacketCreatedEventConsumer {
 
     public static final String TOPIC = "mytelemetry.udp.packet.created";
 
-    private final PacketLapDataEventService service;
+    private final PacketService service;
 
     private final ObjectMapper mapper = new ObjectMapper();
 
@@ -29,9 +29,9 @@ public class PacketCreatedEventConsumer {
         try{
             String json = mapper.writeValueAsString(data.value());
             PacketReceived packet = mapper.readValue(json , PacketReceived.class);
-            //service.process(packet);
+            service.process(packet);
             System.out.println("Package: ");
-        }catch(JsonParseException e){
+        }catch(JsonProcessingException e){
             e.printStackTrace();
         }
     }

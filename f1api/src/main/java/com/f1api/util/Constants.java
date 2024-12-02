@@ -13,4 +13,11 @@ public class Constants {
         public static final Short FL = 2;
         public static final Short FR = 3;
     }
+
+    public static final class PacketId {
+        public static final Short MOTION_PACKET = 0;
+        public static final Short LAP_DATA_PACKET = 2;
+        public static final Short CAR_TELEMETRY_PACKET = 6;
+        public static final Short MOTION_EX_PACKET = 13;
+    }
 }
