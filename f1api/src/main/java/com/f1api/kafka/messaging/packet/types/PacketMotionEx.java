@@ -2,14 +2,14 @@ package com.f1api.kafka.messaging.packet.types;
 
 import java.math.BigDecimal;
 
+import com.f1api.domain.CarCorner;
+import com.f1api.kafka.messaging.packet.master.Packet;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import com.f1api.domain.CarCorner;
-import com.f1api.kafka.messaging.packet.master.Packet;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Getter
 @Setter
@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @AllArgsConstructor
 public class PacketMotionEx implements Packet{
 
-    @JsonProperty("m_packetHeader")
+    @JsonProperty("m_header")
     private PacketHeader packetHeader;
 
     @JsonProperty("m_suspensionPosition")

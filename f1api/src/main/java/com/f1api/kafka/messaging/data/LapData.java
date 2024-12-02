@@ -93,14 +93,5 @@ public class LapData implements Serializable{
         private Integer resultStatus;
     
         @JsonProperty("m_pitLaneTimerActive")
-        private Integer pitLaneTimerActive;
-    
-        @JsonProperty("m_pitLaneTimeInLaneInMS")
-        private BigInteger pitLaneTimeInLaneInMS;
-    
-        @JsonProperty("m_pitStopTimerInMS")
-        private BigInteger pitStopTimerInMS;
-    
-        @JsonProperty("m_pitStopShouldServePen")
-        private Integer pitStopShouldServePen;    
+        private Integer pitLaneTimerActive;   
 }

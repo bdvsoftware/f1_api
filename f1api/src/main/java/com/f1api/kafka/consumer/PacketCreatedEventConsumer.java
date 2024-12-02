@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.f1api.kafka.messaging.packet.PacketReceived;
 import com.f1api.service.packet.PacketLapDataEventService;
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -24,13 +25,13 @@ public class PacketCreatedEventConsumer {
     private final ObjectMapper mapper = new ObjectMapper();
 
     @KafkaListener(topics = TOPIC)
-    public void consumeMessage(ConsumerRecord<String, Object> data) throws JsonProcessingException{
+    public void consumeMessage(ConsumerRecord<String, Object> data) throws JsonProcessingException, JsonParseException{
         try{
             String json = mapper.writeValueAsString(data.value());
             PacketReceived packet = mapper.readValue(json , PacketReceived.class);
             //service.process(packet);
             System.out.println("Package: ");
-        }catch(Exception e){
+        }catch(JsonParseException e){
             e.printStackTrace();
         }
     }
