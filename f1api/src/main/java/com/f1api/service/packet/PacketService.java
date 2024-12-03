@@ -1,11 +1,12 @@
 package com.f1api.service.packet;
 
+import java.util.HashMap;
+import java.util.function.Consumer;
+
 import org.springframework.stereotype.Service;
 
 import com.f1api.kafka.messaging.packet.PacketReceived;
 import com.f1api.util.Constants;
-import java.util.HashMap;
-import java.util.function.Consumer;
 
 @Service
 public class PacketService {
@@ -14,7 +15,7 @@ public class PacketService {
 
     private final HashMap<Short, Consumer<PacketReceived>> functionMap;
 
-    public PacketService(PacketLapDataService packetLapDataService){
+    public PacketService(PacketLapDataService packetLapDataService) {
         this.packetLapDataService = packetLapDataService;
         this.functionMap = new HashMap<>();
         this.functionMap.put(Constants.PacketId.LAP_DATA_PACKET, packetLapDataService::process);

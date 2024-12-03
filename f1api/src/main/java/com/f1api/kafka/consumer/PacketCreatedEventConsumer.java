@@ -30,8 +30,8 @@ public class PacketCreatedEventConsumer {
             String json = mapper.writeValueAsString(data.value());
             PacketReceived packet = mapper.readValue(json , PacketReceived.class);
             service.process(packet);
-            System.out.println("Package: ");
-        }catch(JsonProcessingException e){
+            System.out.println("Processing package with id: "+packet.getId());
+        }catch(JsonParseException e){
             e.printStackTrace();
         }
     }
