@@ -48,20 +48,20 @@ public class CarTelemetryData implements Serializable{
     private Integer revLightsBitValue;
 
     @JsonProperty("m_brakesTemperature")
-    private CarCorner brakesTemperature;
+    private BigDecimal[] brakesTemperature;
 
     @JsonProperty("m_tyresSurfaceTemperature")
-    private CarCorner tyresSurfaceTemperature;
+    private BigDecimal[] tyresSurfaceTemperature;
 
     @JsonProperty("m_tyresInnerTemperature")
-    private CarCorner tyresInnerTemperature;
+    private BigDecimal[] tyresInnerTemperature;
 
     @JsonProperty("m_engineTemperature")
     private Integer engineTemperature; 
 
     @JsonProperty("m_tyresPressure")
-    private CarCorner tyresPressure; 
+    private BigDecimal[] tyresPressure; 
 
     @JsonProperty("m_surfaceType")
-    private CarCorner surfaceType;
+    private BigDecimal[] surfaceType;
 }
