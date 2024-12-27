@@ -25,13 +25,13 @@ public class PacketLapDataService extends BaseService{
     }
 
     private PacketLapDataEntity createEntity(PacketReceived packet){
-        var lapDataPacket = (PacketLapData) packet.getData();
+        var packetLapData = (PacketLapData) packet.getData();
         PacketLapDataEntity entity = new PacketLapDataEntity(
             UUID.randomUUID(), 
-            this.createHeaderEntity(lapDataPacket.getPacketHeader()), 
-            this.createLapDataEntityList(lapDataPacket.getLapData()), 
-            lapDataPacket.getTimeTrialPBCarIdx(), 
-            lapDataPacket.getTimeTrialRivalCarIdx(), 
+            this.createHeaderEntity(packetLapData.getPacketHeader()), 
+            this.createLapDataEntityList(packetLapData.getLapData()), 
+            packetLapData.getTimeTrialPBCarIdx(), 
+            packetLapData.getTimeTrialRivalCarIdx(), 
             LocalDateTime.now());
         return entity;
     }
