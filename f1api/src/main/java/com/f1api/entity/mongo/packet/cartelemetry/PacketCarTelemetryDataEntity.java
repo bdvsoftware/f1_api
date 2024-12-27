@@ -1,6 +1,5 @@
-package com.f1api.entity.mongo.packet.lapdata;
+package com.f1api.entity.mongo.packet.cartelemetry;
 
-import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -11,12 +10,13 @@ import com.f1api.entity.mongo.packet.PacketHeaderEntity;
 
 import jakarta.persistence.Id;
 
-@Document("packet_lap_data")
-public record PacketLapDataEntity (
+@Document("packet_car_telemetry_data")
+public record PacketCarTelemetryDataEntity (
     @Id UUID id,
     PacketHeaderEntity packetHeaderEntity,
-    List<LapDataEntity> lapData,
-    BigInteger timeTrialPBCarIdx,
-    BigInteger timeTrialRivalCarIdx,
+    List<CarTelemetryDataEntity> carTelemetryData,
+    Integer mfdPanelIndex,
+    Integer mfdPanelIndexSecondaryPlayer,
+    Short suggestedGear,
     LocalDateTime createdAt
 ){}

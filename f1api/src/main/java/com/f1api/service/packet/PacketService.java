@@ -13,12 +13,19 @@ public class PacketService {
 
     private final PacketLapDataService packetLapDataService;
 
+    private final PacketCarTelemetryDataService packetCarTelemetryDataService;
+
     private final HashMap<Short, Consumer<PacketReceived>> functionMap;
 
-    public PacketService(PacketLapDataService packetLapDataService) {
+    public PacketService(
+        PacketLapDataService packetLapDataService,
+        PacketCarTelemetryDataService packetCarTelemetryDataService
+    ) {
         this.packetLapDataService = packetLapDataService;
+        this.packetCarTelemetryDataService = packetCarTelemetryDataService;
         this.functionMap = new HashMap<>();
         this.functionMap.put(Constants.PacketId.LAP_DATA_PACKET, packetLapDataService::process);
+        this.functionMap.put(Constants.PacketId.CAR_TELEMETRY_PACKET, packetCarTelemetryDataService::process);
     }
 
     public void process(PacketReceived packet){
