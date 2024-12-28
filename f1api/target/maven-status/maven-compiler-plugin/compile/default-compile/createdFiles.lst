@@ -1,6 +1,7 @@
 com\f1api\kafka\messaging\data\CarMotionData.class
 com\f1api\entity\mongo\packet\motionex\PacketMotionExDataEntity.class
 com\f1api\kafka\messaging\data\LapData.class
+com\f1api\service\TelemetryService.class
 com\f1api\kafka\config\consumer\EnvironmentConsumerRecordInterceptor.class
 com\f1api\repository\mongo\packet\PacketMotionDataMongoRepository.class
 com\f1api\controller\DriverController.class
@@ -49,6 +50,8 @@ com\f1api\kafka\config\producer\EnvironmentHeaderProducerInterceptor.class
 com\f1api\service\packet\PacketLapDataService.class
 com\f1api\util\Constants$CornerSides.class
 com\f1api\util\Constants.class
+com\f1api\dto\LatAccDTO.class
+com\f1api\controller\TelemetryController.class
 com\f1api\entity\mongo\packet\lapdata\PacketLapDataEntity.class
 com\f1api\kafka\messaging\packet\master\Packet.class
 com\f1api\dto\LapTimeDTO.class

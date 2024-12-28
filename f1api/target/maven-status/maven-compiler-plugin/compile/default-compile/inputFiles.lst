@@ -4,6 +4,7 @@ C:\dev\f1_api\f1api\src\main\java\com\f1api\repository\DriverRepository.java
 C:\dev\f1_api\f1api\src\main\java\com\f1api\kafka\consumer\PacketCreatedEventConsumer.java
 C:\dev\f1_api\f1api\src\main\java\com\f1api\kafka\messaging\data\CarTelemetryData.java
 C:\dev\f1_api\f1api\src\main\java\com\f1api\kafka\messaging\packet\types\PacketMotionEx.java
+C:\dev\f1_api\f1api\src\main\java\com\f1api\controller\TelemetryController.java
 C:\dev\f1_api\f1api\src\main\java\com\f1api\kafka\messaging\packet\PacketReceived.java
 C:\dev\f1_api\f1api\src\main\java\com\f1api\repository\mongo\packet\PacketCarTelemetryDataMongoRepository.java
 C:\dev\f1_api\f1api\src\main\java\com\f1api\entity\LapTime.java
@@ -36,6 +37,7 @@ C:\dev\f1_api\f1api\src\main\java\com\f1api\service\packet\PacketLapDataService.
 C:\dev\f1_api\f1api\src\main\java\com\f1api\repository\mongo\packet\PacketMotionExDataMongoRepository.java
 C:\dev\f1_api\f1api\src\main\java\com\f1api\service\Base64Service.java
 C:\dev\f1_api\f1api\src\main\java\com\f1api\entity\mongo\packet\motion\PacketMotionDataEntity.java
+C:\dev\f1_api\f1api\src\main\java\com\f1api\service\TelemetryService.java
 C:\dev\f1_api\f1api\src\main\java\com\f1api\domain\CarCorner.java
 C:\dev\f1_api\f1api\src\main\java\com\f1api\dto\LapTimesDriverRaceDTO.java
 C:\dev\f1_api\f1api\src\main\java\com\f1api\service\packet\PacketService.java
@@ -48,6 +50,7 @@ C:\dev\f1_api\f1api\src\main\java\com\f1api\kafka\config\producer\EnvironmentHea
 C:\dev\f1_api\f1api\src\main\java\com\f1api\repository\LapTimesRepository.java
 C:\dev\f1_api\f1api\src\main\java\com\f1api\repository\mongo\LapTimeDriverMongoRepository.java
 C:\dev\f1_api\f1api\src\main\java\com\f1api\kafka\messaging\packet\types\PacketHeader.java
+C:\dev\f1_api\f1api\src\main\java\com\f1api\dto\LatAccDTO.java
 C:\dev\f1_api\f1api\src\main\java\com\f1api\repository\mongo\packet\PacketLapDataMongoRepository.java
 C:\dev\f1_api\f1api\src\main\java\com\f1api\entity\mongo\LapTimeDriverMongo.java
 C:\dev\f1_api\f1api\src\main\java\com\f1api\kafka\messaging\packet\master\Packet.java
