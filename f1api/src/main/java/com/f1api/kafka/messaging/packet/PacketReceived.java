@@ -21,6 +21,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 public class PacketReceived implements Serializable {
     private Short id;
 
+    private String stintName;
+
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "packetType")
     @JsonSubTypes({
         @JsonSubTypes.Type(value = PacketMotion.class, name = Constants.PacketTypes.MOTION_PACKET),

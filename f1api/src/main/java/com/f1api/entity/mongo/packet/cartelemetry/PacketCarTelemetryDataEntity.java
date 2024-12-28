@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 @Document("packet_car_telemetry_data")
 public record PacketCarTelemetryDataEntity (
     @Id UUID id,
+    String stintName,
     PacketHeaderEntity packetHeaderEntity,
     List<CarTelemetryDataEntity> carTelemetryData,
     Integer mfdPanelIndex,

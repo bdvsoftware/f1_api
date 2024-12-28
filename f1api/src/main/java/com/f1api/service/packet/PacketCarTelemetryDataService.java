@@ -30,6 +30,7 @@ public class PacketCarTelemetryDataService extends BaseService{
         var carTelemetryData = (PacketCarTelemetry) packet.getData();
         PacketCarTelemetryDataEntity entity = new PacketCarTelemetryDataEntity(
             UUID.randomUUID(), 
+            packet.getStintName(),
             this.createHeaderEntity(carTelemetryData.getPacketHeader()), 
             this.createCarTelemetryDataEntityList(carTelemetryData.getCarTelemetryData()), 
             carTelemetryData.getMfdPanelIndex(),

@@ -30,6 +30,7 @@ public class PacketMotionDataService extends BaseService{
         var carMotionData = (PacketMotion) packet.getData();
         PacketMotionDataEntity entity = new PacketMotionDataEntity(
             UUID.randomUUID(),
+            packet.getStintName(),
             this.createHeaderEntity(carMotionData.getPacketHeader()),
             this.createCarMotionDataEntityList(carMotionData.getCarMotionData()),
             LocalDateTime.now()

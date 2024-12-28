@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 @Document("packet_motion_ex_data")
 public record PacketMotionExDataEntity (
     @Id UUID id,
+    String stintName,
     PacketHeaderEntity packetHeaderEntity,
     BigDecimal[] suspensionPosition,
     BigDecimal[] suspensionVelocity,

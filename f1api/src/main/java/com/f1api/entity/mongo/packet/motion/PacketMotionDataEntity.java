@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 @Document("packet_motion_data")
 public record PacketMotionDataEntity (
     @Id UUID id,
+    String stintName,
     PacketHeaderEntity packetHeaderEntity,
     List<CarMotionDataEntity> carMotionData,
     LocalDateTime createdAt

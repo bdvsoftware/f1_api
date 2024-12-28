@@ -28,6 +28,7 @@ public class PacketLapDataService extends BaseService{
         var packetLapData = (PacketLapData) packet.getData();
         PacketLapDataEntity entity = new PacketLapDataEntity(
             UUID.randomUUID(), 
+            packet.getStintName(),
             this.createHeaderEntity(packetLapData.getPacketHeader()), 
             this.createLapDataEntityList(packetLapData.getLapData()), 
             packetLapData.getTimeTrialPBCarIdx(), 

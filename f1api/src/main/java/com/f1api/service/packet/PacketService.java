@@ -25,8 +25,6 @@ public class PacketService {
 
     private final HashMap<Short, Consumer<PacketReceived>> functionMap;
 
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(PacketService.class);
-
     public PacketService(
         PacketLapDataService packetLapDataService,
         PacketCarTelemetryDataService packetCarTelemetryDataService,
