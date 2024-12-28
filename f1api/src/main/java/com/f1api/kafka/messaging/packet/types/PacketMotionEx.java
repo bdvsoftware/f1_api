@@ -21,31 +21,31 @@ public class PacketMotionEx implements Packet{
     private PacketHeader packetHeader;
 
     @JsonProperty("m_suspensionPosition")
-    private CarCorner suspensionPosition;
+    private BigDecimal[] suspensionPosition;
 
     @JsonProperty("m_suspensionVelocity")
-    private CarCorner suspensionVelocity;
+    private BigDecimal[] suspensionVelocity;
 
     @JsonProperty("m_suspensionAcceleration")
-    private CarCorner suspensionAcceleration;
+    private BigDecimal[] suspensionAcceleration;
 
     @JsonProperty("m_wheelSpeed")
-    private CarCorner wheelSpeed;
+    private BigDecimal[] wheelSpeed;
 
     @JsonProperty("m_wheelSlipRatio")
-    private CarCorner wheelSlipRatio;
+    private BigDecimal[] wheelSlipRatio;
 
     @JsonProperty("m_wheelSlipAngle")
-    private CarCorner wheelSlipAngle;
+    private BigDecimal[] wheelSlipAngle;
 
     @JsonProperty("m_wheelLatForce")
-    private CarCorner wheelLatForce;
+    private BigDecimal[] wheelLatForce;
 
     @JsonProperty("m_wheelLongForce")
-    private CarCorner wheelLongForce;
+    private BigDecimal[] wheelLongForce;
 
     @JsonProperty("m_wheelVertForce")
-    private CarCorner wheelVertForce;
+    private BigDecimal[] wheelVertForce;
 
     @JsonProperty("m_heightOfCOGAboveGround")
     private BigDecimal heightOfCOGAboveGround;
