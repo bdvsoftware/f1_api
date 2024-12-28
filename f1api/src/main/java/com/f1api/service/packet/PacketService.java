@@ -1,6 +1,7 @@
 package com.f1api.service.packet;
 
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 import org.springframework.stereotype.Service;
@@ -8,7 +9,10 @@ import org.springframework.stereotype.Service;
 import com.f1api.kafka.messaging.packet.PacketReceived;
 import com.f1api.util.Constants;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class PacketService {
 
     private final PacketLapDataService packetLapDataService;
@@ -20,6 +24,8 @@ public class PacketService {
     private final PacketMotionExDataService packetMotionExDataService;
 
     private final HashMap<Short, Consumer<PacketReceived>> functionMap;
+
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(PacketService.class);
 
     public PacketService(
         PacketLapDataService packetLapDataService,
@@ -39,8 +45,9 @@ public class PacketService {
     }
 
     public void process(PacketReceived packet){
+        log.debug("Processing packet with id: " + packet.getId());
         var action = this.functionMap.get(packet.getId());
-        if(action != null){
+        if(Objects.nonNull(action)){
             action.accept(packet);
         }
     }
