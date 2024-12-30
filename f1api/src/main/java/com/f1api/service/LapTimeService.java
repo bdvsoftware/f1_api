@@ -15,6 +15,7 @@ import com.f1api.repository.mongo.LapTimeDriverMongoRepository;
 import com.f1api.entity.Driver;
 import com.f1api.entity.Race;
 import com.f1api.entity.mongo.LapTimeDriverMongo;
+import com.f1api.util.Constants;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -34,8 +35,6 @@ public class LapTimeService {
     private final LapTimeDriverMongoRepository lapTimeDriverMongoRepository;
 
     private final Base64Service base64Service;
-
-    private static final String GRAPHIC_SERVICE_URL = "http://localhost:5000/generate-graphic";
 
     @Transactional
     public List<LapTimesDriverRaceDTO> getLapTimesDriverRace(Short[] driverIds, Long raceId){
@@ -60,13 +59,13 @@ public class LapTimeService {
         WebClient webClient = WebClient.create();
 
         String img = webClient.post()
-                .uri(GRAPHIC_SERVICE_URL)
+                .uri(Constants.Url.GENERATE_GRAPHIC)
                 .body(BodyInserters.fromValue(lapTimesDriverRaceDTOs))
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
 
-        this.base64Service.decodeAndSaveImage(img, raceData.getName(), raceData.getYear());
+        this.base64Service.decodeAndSaveImage(img, raceData.getName() + "-" + raceData.getYear());
 
         this.lapTimesDriverRaceRequestEvent.sendMessage(lapTimesDriverRaceDTOs);
 

@@ -21,4 +21,6 @@ public class LatAccDTO implements Serializable{
     private BigDecimal accLat;
 
     private BigDecimal sessionTime;
+
+    private String stint;
 }

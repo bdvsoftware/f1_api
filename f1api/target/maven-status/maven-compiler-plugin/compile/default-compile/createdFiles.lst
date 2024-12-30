@@ -22,6 +22,7 @@ com\f1api\service\packet\PacketService.class
 com\f1api\entity\mongo\packet\cartelemetry\CarTelemetryDataEntity.class
 com\f1api\kafka\messaging\packet\types\PacketHeader.class
 com\f1api\util\Constants$PacketTypes.class
+com\f1api\util\Constants$Url.class
 com\f1api\controller\CirctuirController.class
 com\f1api\util\Constants$PacketId.class
 com\f1api\service\packet\PacketMotionExDataService.class

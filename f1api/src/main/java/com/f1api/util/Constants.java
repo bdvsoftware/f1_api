@@ -20,4 +20,9 @@ public class Constants {
         public static final Short CAR_TELEMETRY_PACKET = 6;
         public static final Short MOTION_EX_PACKET = 13;
     }
+
+    public static final class Url {
+        public static final String GENERATE_GRAPHIC = "http://localhost:5000/generate-graphic";
+        public static final String GENERATE_LAT_ACC_TIMES_GRAPHIC = "http://localhost:5000/acc-lat-graphic";
+    }
 }

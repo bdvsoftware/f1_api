@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class Base64Service {
     
-    public void decodeAndSaveImage(String base64Image, String gp, Integer year) {
+    public void decodeAndSaveImage(String base64Image, String name) {
         try {
             byte[] decodedBytes = Base64.getDecoder().decode(base64Image);
 
-            String fileName = gp + "-" + year + ".png";
+            String fileName = name + ".png";
             fileName = fileName.replaceAll("\\s", "");
             
             Path outputDirectory = Paths.get("out/");
