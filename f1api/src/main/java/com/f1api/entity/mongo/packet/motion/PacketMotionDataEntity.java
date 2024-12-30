@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.f1api.entity.mongo.packet.PacketHeaderEntity;
 
 import jakarta.persistence.Id;
+import lombok.Getter;
 
 @Document("packet_motion_data")
 public record PacketMotionDataEntity (

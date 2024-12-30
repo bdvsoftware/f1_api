@@ -1,6 +1,8 @@
 package com.f1api.service;
 
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -26,7 +28,10 @@ public class TelemetryService {
     private final PacketMotionExDataMongoRepository motionExDataRepository;
 
     public List<LatAccDTO> produceLatAccGraph(String stint){
-        var dtos = this.motionDataRepository.findAllLatAccByStintName(stint);
+        var entities = this.motionDataRepository.findAllLatAccByStintName(stint);
+        var dtos = entities.stream()
+        .map(item -> new LatAccDTO(item.id(), item.carMotionData().get(0).gForceLateral(), item.packetHeaderEntity().sessionTime()))
+        .collect(Collectors.toList());
         return dtos;
     }
 }

@@ -1,6 +1,7 @@
 package com.f1api.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,9 +18,7 @@ public class LatAccDTO implements Serializable{
 
     private UUID id;
 
-    @Field("carMotionData.gForceLateral")
-    private List<String> accLat;
+    private BigDecimal accLat;
 
-    @Field("packetHeaderEntity.sessionTime")
-    private String sessionTime;
+    private BigDecimal sessionTime;
 }
