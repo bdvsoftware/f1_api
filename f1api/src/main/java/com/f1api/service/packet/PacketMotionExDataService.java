@@ -8,16 +8,21 @@ import com.f1api.entity.mongo.packet.motionex.PacketMotionExDataEntity;
 import com.f1api.kafka.messaging.packet.PacketReceived;
 import com.f1api.kafka.messaging.packet.types.PacketMotionEx;
 import com.f1api.repository.mongo.packet.PacketMotionExDataMongoRepository;
-
-import lombok.RequiredArgsConstructor;
+import com.f1api.repository.mongo.stint.StintMongoRepository;
 
 @Service
-@RequiredArgsConstructor
 public class PacketMotionExDataService extends BaseService{
 
     private final PacketMotionExDataMongoRepository repository;
 
+    public PacketMotionExDataService(PacketMotionExDataMongoRepository repository, StintMongoRepository stintRepository) {
+        super(stintRepository);
+        this.repository = repository;
+    }
+
+
     public void process(PacketReceived packet){
+        this.saveStintNameIfNotExists(packet.getStintName());
         this.repository.save(this.createEntity(packet));
     }
 

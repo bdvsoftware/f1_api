@@ -13,16 +13,20 @@ import com.f1api.kafka.messaging.data.CarMotionData;
 import com.f1api.kafka.messaging.packet.PacketReceived;
 import com.f1api.kafka.messaging.packet.types.PacketMotion;
 import com.f1api.repository.mongo.packet.PacketMotionDataMongoRepository;
-
-import lombok.RequiredArgsConstructor;
+import com.f1api.repository.mongo.stint.StintMongoRepository;
 
 @Service
-@RequiredArgsConstructor
 public class PacketMotionDataService extends BaseService{
     
     private final PacketMotionDataMongoRepository repository;
 
+    public PacketMotionDataService(PacketMotionDataMongoRepository repository, StintMongoRepository stintRepository) {
+        super(stintRepository);
+        this.repository = repository;
+    }
+
     public void process(PacketReceived packet){
+        this.saveStintNameIfNotExists(packet.getStintName());
         this.repository.save(this.createEntity(packet));
     }
 

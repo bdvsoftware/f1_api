@@ -2,26 +2,34 @@ package com.f1api.service.packet;
 
 
 import org.springframework.stereotype.Service;
+
 import com.f1api.entity.mongo.packet.lapdata.PacketLapDataEntity;
 import com.f1api.kafka.messaging.packet.PacketReceived;
 import com.f1api.kafka.messaging.packet.types.PacketLapData;
 import com.f1api.repository.mongo.packet.PacketLapDataMongoRepository;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+
 import com.f1api.entity.mongo.packet.lapdata.LapDataEntity;
 import com.f1api.kafka.messaging.data.LapData;
-import lombok.RequiredArgsConstructor;
+import com.f1api.repository.mongo.stint.StintMongoRepository;
 
 @Service
-@RequiredArgsConstructor
 public class PacketLapDataService extends BaseService{
 
     private final PacketLapDataMongoRepository repository;
 
+    public PacketLapDataService(PacketLapDataMongoRepository repository, StintMongoRepository stintRepository) {
+        super(stintRepository);
+        this.repository = repository;
+    }
+
     public void process(PacketReceived packet){
-       this.repository.save(this.createEntity(packet));
+        this.saveStintNameIfNotExists(packet.getStintName());
+        this.repository.save(this.createEntity(packet));
     }
 
     private PacketLapDataEntity createEntity(PacketReceived packet){

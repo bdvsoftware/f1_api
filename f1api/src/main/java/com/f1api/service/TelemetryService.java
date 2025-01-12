@@ -1,7 +1,6 @@
 package com.f1api.service;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -9,7 +8,6 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.f1api.dto.LatAccDTO;
-import com.f1api.entity.mongo.packet.motion.PacketMotionDataEntity;
 import com.f1api.repository.mongo.packet.PacketCarTelemetryDataMongoRepository;
 import com.f1api.repository.mongo.packet.PacketLapDataMongoRepository;
 import com.f1api.repository.mongo.packet.PacketMotionDataMongoRepository;
