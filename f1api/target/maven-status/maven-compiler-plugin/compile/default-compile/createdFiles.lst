@@ -8,7 +8,6 @@ com\f1api\controller\DriverController.class
 com\f1api\kafka\config\consumer\KafkaListenerContainerConfig.class
 com\f1api\service\DriverService.class
 com\f1api\kafka\CorsConfig.class
-META-INF\spring-configuration-metadata.json
 com\f1api\service\packet\PacketCarTelemetryDataService.class
 com\f1api\F1apiApplication.class
 com\f1api\kafka\producer\laptime\LapTimesDriverRaceRequestEvent.class
