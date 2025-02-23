@@ -1,5 +1,6 @@
 package com.f1api.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,6 +9,10 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.f1api.dto.LatAccDTO;
+import com.f1api.entity.mongo.packet.cartelemetry.PacketCarTelemetryDataEntity;
+import com.f1api.entity.mongo.packet.lapdata.PacketLapDataEntity;
+import com.f1api.entity.mongo.packet.motion.PacketMotionDataEntity;
+import com.f1api.entity.mongo.packet.motionex.PacketMotionExDataEntity;
 import com.f1api.repository.mongo.packet.PacketCarTelemetryDataMongoRepository;
 import com.f1api.repository.mongo.packet.PacketLapDataMongoRepository;
 import com.f1api.repository.mongo.packet.PacketMotionDataMongoRepository;
@@ -48,5 +53,30 @@ public class TelemetryService {
         this.base64Service.decodeAndSaveImage(img, dtos.get(0).getStint());
 
         return dtos;
+    }
+
+    public List<String> getYAxisAtributes(){
+        ArrayList<String> names = new ArrayList<>();
+        List<Class> classes = List.of(
+            PacketCarTelemetryDataEntity.class, 
+            PacketLapDataEntity.class, 
+            PacketMotionDataEntity.class, 
+            PacketMotionExDataEntity.class);
+        this.getClassAtributes(classes, names);
+        return names;
+    }
+
+    private void getClassAtributes(List<Class> classList, List<String> namesList){
+        classList.forEach(c -> {
+            List.of(c.getDeclaredFields()).forEach(item -> {
+                if(Constants.SubEntities.NAME_LIST.contains(item.getName())){
+                    List.of(item.getClass().getDeclaredFields()).forEach(subItem -> {
+                        namesList.add(subItem.getName());
+                    });
+                }else{
+                    namesList.add(item.getName());
+                }
+            });
+        });
     }
 }

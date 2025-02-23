@@ -23,4 +23,9 @@ public class TelemetryController {
     public List<LatAccDTO> getLatAccGraph(@RequestParam String stint){
         return this.telemetryService.produceLatAccGraph(stint);
     }
+
+    @GetMapping("/y-axis-options")
+    public List<String> getYAxisOptions(){
+        return this.telemetryService.getYAxisAtributes();
+    }
 }
