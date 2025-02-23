@@ -1,5 +1,6 @@
 package com.f1api.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.f1api.dto.LatAccDTO;
+import com.f1api.dto.TelemetryDto;
+import com.f1api.dto.YAxisDto;
 import com.f1api.service.TelemetryService;
 
 import lombok.RequiredArgsConstructor;
@@ -25,7 +28,12 @@ public class TelemetryController {
     }
 
     @GetMapping("/y-axis-options")
-    public List<String> getYAxisOptions(){
+    public List<YAxisDto> getYAxisOptions(){
         return this.telemetryService.getYAxisAtributes();
+    }
+
+    @GetMapping("/stint-data")
+    public List<TelemetryDto> getTelemetryData(@RequestParam String yAxis, @RequestParam String xAxis){
+        return null;
     }
 }
