@@ -1,8 +1,8 @@
 package com.f1api.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -13,6 +13,7 @@ import com.f1api.dto.LatAccDTO;
 import com.f1api.dto.TelemetryDto;
 import com.f1api.dto.YAxisDto;
 import com.f1api.entity.mongo.packet.cartelemetry.PacketCarTelemetryDataEntity;
+import com.f1api.entity.mongo.packet.lapdata.LapDataEntity;
 import com.f1api.entity.mongo.packet.lapdata.PacketLapDataEntity;
 import com.f1api.entity.mongo.packet.motion.PacketMotionDataEntity;
 import com.f1api.entity.mongo.packet.motionex.PacketMotionExDataEntity;
@@ -70,20 +71,43 @@ public class TelemetryService {
     private List<YAxisDto> getClassAtributes(List<Class> classList){
         ArrayList<YAxisDto> yAxisFields = new ArrayList<>();
         classList.forEach(c -> {
-            List.of(c.getDeclaredFields()).forEach(item -> {
-                if(Constants.SubEntities.NAME_LIST.contains(item.getName())){
-                    List.of(item.getClass().getDeclaredFields()).forEach(subItem -> {
-                        yAxisFields.add(new YAxisDto(subItem.getName(), c.getSimpleName()));
-                    });
-                }else{
-                    yAxisFields.add(new YAxisDto(item.getName(), c.getSimpleName()));
-                }
+            List.of(c.getDeclaredFields())
+                .stream()
+                .filter(field -> !field.getName().equals(Constants.PACKET_HEADER_ENTITY_STRING))
+                .forEach(item -> {
+                    if(Constants.SubEntities.NAME_LIST.contains(item.getName())){
+                        List.of(item.getClass().getDeclaredFields())
+                        .stream()
+                        .filter(field -> !field.getName().equals(Constants.PACKET_HEADER_ENTITY_STRING))
+                        .forEach(subItem -> {
+                            yAxisFields.add(new YAxisDto(subItem.getName(), c.getSimpleName()));
+                        });
+                    }else{
+                        yAxisFields.add(new YAxisDto(item.getName(), c.getSimpleName()));
+                    }
             });
         });
         return yAxisFields;
     }
 
-    public List<TelemetryDto> findTelemetryData(String yAxis, String xAxis){
-        return null;
+    public List<TelemetryDto> findTelemetryData(
+        String yAxis,
+        String refEntity, 
+        String xAxis,
+        String stint){
+            return this.findLapData(yAxis, refEntity, xAxis, stint);
     }
+
+    private List<TelemetryDto> findLapData(String yAxis,
+        String refEntity, 
+        String xAxis,
+        String stint){
+            var rawData = this.lapDataRepository.findByStintName(stint);
+            rawData.forEach(item -> {
+                var id = item.id();
+                var currentPlayerData = item.lapData().getFirst();
+            });
+            
+            return null;
+        }
 }

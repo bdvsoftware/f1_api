@@ -1,6 +1,5 @@
 package com.f1api.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +32,11 @@ public class TelemetryController {
     }
 
     @GetMapping("/stint-data")
-    public List<TelemetryDto> getTelemetryData(@RequestParam String yAxis, @RequestParam String xAxis){
-        return null;
+    public List<TelemetryDto> getTelemetryData(
+        @RequestParam String yAxis,
+        @RequestParam String refEntity,
+        @RequestParam String xAxis,
+        @RequestParam String stint){
+        return this.telemetryService.findTelemetryData(yAxis, refEntity, xAxis, stint);
     }
 }

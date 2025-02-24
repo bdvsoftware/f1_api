@@ -1,10 +1,14 @@
 package com.f1api.util;
 
+import java.util.HashMap;
 import java.util.List;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.f1api.entity.mongo.packet.cartelemetry.CarTelemetryDataEntity;
 import com.f1api.entity.mongo.packet.lapdata.LapDataEntity;
 import com.f1api.entity.mongo.packet.motion.CarMotionDataEntity;
+import com.f1api.entity.mongo.packet.motionex.PacketMotionExDataEntity;
 
 public class Constants {
     public static final class PacketTypes {
@@ -37,6 +41,21 @@ public class Constants {
         public static final Class<?> CAR_TELEMETRY_DATA_ENTITY = CarTelemetryDataEntity.class;
         public static final Class<?> LAP_DATA_ENTITY = LapDataEntity.class;
         public static final Class<?> CAR_MOTION_ENTITY = CarMotionDataEntity.class;
-        public static final List<String> NAME_LIST = List.of(CAR_TELEMETRY_DATA_ENTITY.getName(), LAP_DATA_ENTITY.getName(), CAR_MOTION_ENTITY.getName());
+        public static final Class<?> CAR_MOTION_EX_ENTITY = PacketMotionExDataEntity.class;
+        public static final List<String> NAME_LIST = List.of(
+            CAR_TELEMETRY_DATA_ENTITY.getName(), 
+            LAP_DATA_ENTITY.getName(), 
+            CAR_MOTION_ENTITY.getName(),
+            CAR_MOTION_EX_ENTITY.getName());
     }
+
+    public static final String PACKET_HEADER_ENTITY_STRING = "packetHeaderEntity";
+
+    public static final String CAR_TELEMETRY_ENTITY_STRING = "CarTelemetryDataEntity";
+    public static final String LAP_DATA_ENTITY_STRING = "LapDataEntity";
+    public static final String CAR_MOTION_ENTITY_STRING = "CarMotionDataEntity";
+    public static final String CAR_MOTION_EX_ENTITY_STRING = "PacketMotionExDataEntity";
+
+    public static final String TIME = "t";
+    public static final String DISTANCE = "d";
 }
