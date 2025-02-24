@@ -38,14 +38,14 @@ public class Constants {
     }
 
     public static final class SubEntities {
-        public static final Class<?> CAR_TELEMETRY_DATA_ENTITY = CarTelemetryDataEntity.class;
-        public static final Class<?> LAP_DATA_ENTITY = LapDataEntity.class;
-        public static final Class<?> CAR_MOTION_ENTITY = CarMotionDataEntity.class;
+        public static final String CAR_TELEMETRY_DATA_ENTITY = "carTelemetryData";
+        public static final String LAP_DATA_ENTITY = "lapData";
+        public static final String CAR_MOTION_ENTITY = "carMotionData";
         public static final Class<?> CAR_MOTION_EX_ENTITY = PacketMotionExDataEntity.class;
         public static final List<String> NAME_LIST = List.of(
-            CAR_TELEMETRY_DATA_ENTITY.getName(), 
-            LAP_DATA_ENTITY.getName(), 
-            CAR_MOTION_ENTITY.getName(),
+            CAR_TELEMETRY_DATA_ENTITY, 
+            LAP_DATA_ENTITY, 
+            CAR_MOTION_ENTITY,
             CAR_MOTION_EX_ENTITY.getName());
     }
 

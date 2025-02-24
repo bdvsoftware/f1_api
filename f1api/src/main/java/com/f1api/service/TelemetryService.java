@@ -1,5 +1,6 @@
 package com.f1api.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collector;
@@ -24,9 +25,11 @@ import com.f1api.repository.mongo.packet.PacketMotionExDataMongoRepository;
 import com.f1api.util.Constants;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class TelemetryService {
     
     private final PacketCarTelemetryDataMongoRepository carTelemetryDataRepository;
@@ -98,16 +101,25 @@ public class TelemetryService {
             return this.findLapData(yAxis, refEntity, xAxis, stint);
     }
 
-    private List<TelemetryDto> findLapData(String yAxis,
+    private <T> List<TelemetryDto> findLapData(String yAxis,
         String refEntity, 
         String xAxis,
         String stint){
+            List<TelemetryDto> data = new ArrayList<>();
             var rawData = this.lapDataRepository.findByStintName(stint);
             rawData.forEach(item -> {
                 var id = item.id();
                 var currentPlayerData = item.lapData().getFirst();
+                try{
+                    var yAtribute = currentPlayerData.getClass().getDeclaredField(yAxis);
+                    yAtribute.setAccessible(Boolean.TRUE);
+                    T yValue = (T) yAtribute.get(currentPlayerData);
+                    data.add(new TelemetryDto<T>(item.id(), yValue, item.packetHeaderEntity().sessionTime(), stint));
+                }catch(Exception e) {
+                    log.error("Error retrieving atribute: ", yAxis, e);
+                }
             });
             
-            return null;
-        }
+            return data;
+    }
 }
