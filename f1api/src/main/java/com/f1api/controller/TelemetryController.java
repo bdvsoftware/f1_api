@@ -1,6 +1,7 @@
 package com.f1api.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,12 +28,12 @@ public class TelemetryController {
     }
 
     @GetMapping("/y-axis-options")
-    public List<YAxisDto> getYAxisOptions(){
+    public Set<YAxisDto> getYAxisOptions(){
         return this.telemetryService.getYAxisAtributes();
     }
 
     @GetMapping("/stint-data")
-    public List<TelemetryDto> getTelemetryData(
+    public <T> List<TelemetryDto> getTelemetryData(
         @RequestParam String yAxis,
         @RequestParam String refEntity,
         @RequestParam String xAxis,

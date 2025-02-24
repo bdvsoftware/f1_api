@@ -2,7 +2,10 @@ package com.f1api.service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -62,34 +65,17 @@ public class TelemetryService {
         return dtos;
     }
 
-    public List<YAxisDto> getYAxisAtributes(){
-        List<Class> classes = List.of(
-            PacketCarTelemetryDataEntity.class, 
-            PacketLapDataEntity.class, 
-            PacketMotionDataEntity.class, 
-            PacketMotionExDataEntity.class);
-        return this.getClassAtributes(classes);
-    }
-
-    private List<YAxisDto> getClassAtributes(List<Class> classList){
-        ArrayList<YAxisDto> yAxisFields = new ArrayList<>();
-        classList.forEach(c -> {
-            List.of(c.getDeclaredFields())
-                .stream()
+    public Set<YAxisDto> getYAxisAtributes(){
+        Set<YAxisDto> yAxisFields = new HashSet<>();
+    
+        Constants.Entities.NAME_LIST.forEach(c -> {
+            Arrays.stream(c.getDeclaredFields())
                 .filter(field -> !field.getName().equals(Constants.PACKET_HEADER_ENTITY_STRING))
                 .forEach(item -> {
-                    if(Constants.SubEntities.NAME_LIST.contains(item.getName())){
-                        List.of(item.getClass().getDeclaredFields())
-                        .stream()
-                        .filter(field -> !field.getName().equals(Constants.PACKET_HEADER_ENTITY_STRING))
-                        .forEach(subItem -> {
-                            yAxisFields.add(new YAxisDto(subItem.getName(), c.getSimpleName()));
-                        });
-                    }else{
-                        yAxisFields.add(new YAxisDto(item.getName(), c.getSimpleName()));
-                    }
-            });
+                    yAxisFields.add(new YAxisDto(item.getName(), c.getSimpleName()));
+                });
         });
+
         return yAxisFields;
     }
 
@@ -108,13 +94,12 @@ public class TelemetryService {
             List<TelemetryDto> data = new ArrayList<>();
             var rawData = this.lapDataRepository.findByStintName(stint);
             rawData.forEach(item -> {
-                var id = item.id();
                 var currentPlayerData = item.lapData().getFirst();
                 try{
                     var yAtribute = currentPlayerData.getClass().getDeclaredField(yAxis);
                     yAtribute.setAccessible(Boolean.TRUE);
                     T yValue = (T) yAtribute.get(currentPlayerData);
-                    data.add(new TelemetryDto<T>(item.id(), yValue, item.packetHeaderEntity().sessionTime(), stint));
+                    data.add(new TelemetryDto<T>(item.id(), yAxis, yValue, item.packetHeaderEntity().sessionTime(), stint));
                 }catch(Exception e) {
                     log.error("Error retrieving atribute: ", yAxis, e);
                 }

@@ -14,6 +14,8 @@ public class TelemetryDto<T> {
     
     private UUID headerId;
 
+    private String yAxisName;
+
     private T yAxisValue;
     
     private BigDecimal xAxisValue;
