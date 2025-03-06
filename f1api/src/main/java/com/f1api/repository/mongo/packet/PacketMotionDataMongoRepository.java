@@ -13,4 +13,6 @@ public interface PacketMotionDataMongoRepository extends MongoRepository<PacketM
     
     @Query(value = "{ 'stintName': ?0 }")
     List<PacketMotionDataEntity> findAllLatAccByStintName(String stintName);
+
+    List<PacketMotionDataEntity> findByStintName(String stintName);
 }
