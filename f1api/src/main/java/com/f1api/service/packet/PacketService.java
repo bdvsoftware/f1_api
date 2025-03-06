@@ -23,23 +23,33 @@ public class PacketService {
 
     private final PacketMotionExDataService packetMotionExDataService;
 
+    private final PacketCarSetupDataService packetCarSetupDataService;
+
+    private final PacketCarStatusDataService packetCarStatusDataService;
+
     private final HashMap<Short, Consumer<PacketReceived>> functionMap;
 
     public PacketService(
         PacketLapDataService packetLapDataService,
         PacketCarTelemetryDataService packetCarTelemetryDataService,
         PacketMotionDataService packetMotionDataService,
-        PacketMotionExDataService packetMotionExDataService
+        PacketMotionExDataService packetMotionExDataService,
+        PacketCarSetupDataService packetCarSetupDataService,
+        PacketCarStatusDataService packetCarStatusDataService
     ) {
         this.packetLapDataService = packetLapDataService;
         this.packetCarTelemetryDataService = packetCarTelemetryDataService;
         this.packetMotionDataService = packetMotionDataService;
         this.packetMotionExDataService = packetMotionExDataService;
+        this.packetCarSetupDataService = packetCarSetupDataService;
+        this.packetCarStatusDataService = packetCarStatusDataService;
         this.functionMap = new HashMap<>();
         this.functionMap.put(Constants.PacketId.LAP_DATA_PACKET, packetLapDataService::process);
         this.functionMap.put(Constants.PacketId.MOTION_PACKET, packetMotionDataService::process);
         this.functionMap.put(Constants.PacketId.CAR_TELEMETRY_PACKET, packetCarTelemetryDataService::process);
         this.functionMap.put(Constants.PacketId.MOTION_EX_PACKET, packetMotionExDataService::process);
+        this.functionMap.put(Constants.PacketId.CAR_SETUP_PACKET, packetCarSetupDataService::process);
+        this.functionMap.put(Constants.PacketId.CAR_STATUS_PACKET, packetCarStatusDataService::process);
     }
 
     public void process(PacketReceived packet){

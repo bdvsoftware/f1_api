@@ -12,6 +12,8 @@ public class Constants {
         public static final String LAP_DATA_PACKET = "lapDataPacketData";
         public static final String CAR_TELEMETRY_PACKET = "carTelemetryPacketData";
         public static final String MOTION_EX_PACKET = "motionExPacketData";
+        public static final String CAR_SETUP_PACKET = "carSetupPacketData";
+        public static final String CAR_STATUS_PACKET = "carStatusPacketData";
     }
 
     public static final class CornerSides {
@@ -24,7 +26,9 @@ public class Constants {
     public static final class PacketId {
         public static final Short MOTION_PACKET = 0;
         public static final Short LAP_DATA_PACKET = 2;
+        public static final Short CAR_SETUP_PACKET = 5;
         public static final Short CAR_TELEMETRY_PACKET = 6;
+        public static final Short CAR_STATUS_PACKET = 7;
         public static final Short MOTION_EX_PACKET = 13;
     }
 

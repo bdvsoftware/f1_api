@@ -2,7 +2,6 @@ package com.f1api.kafka.messaging.packet.types;
 
 import java.math.BigDecimal;
 
-import com.f1api.domain.CarCorner;
 import com.f1api.kafka.messaging.packet.master.Packet;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -15,7 +14,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PacketMotionEx implements Packet{
+public class PacketMotionEx implements Packet {
 
     @JsonProperty("m_header")
     private PacketHeader packetHeader;
