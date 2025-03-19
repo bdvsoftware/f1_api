@@ -1,9 +1,6 @@
 package com.f1api.util;
 
-import java.util.HashMap;
 import java.util.List;
-
-import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.f1api.entity.mongo.packet.cartelemetry.CarTelemetryDataEntity;
 import com.f1api.entity.mongo.packet.lapdata.LapDataEntity;
