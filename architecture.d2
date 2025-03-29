@@ -1,0 +1,13 @@
+F1_23: "🚗 F1 23 (UDP Port 20777)"
+PythonApp: "🐍 myTelemetry (sniffer)"
+Kafka: "📩 Kafka"
+SpringApp: "🌐 Spring API"
+MongoDB: "🗄️ MongoDB"
+AngularApp: "💻 Angular Frontend"
+
+
+F1_23 -> PythonApp: "Send UDP messages"
+PythonApp -> Kafka: "Publish processed messages"
+Kafka -> SpringApp: "Deliver Kafka messages"
+SpringApp <-> MongoDB: "Storages processed data"
+AngularApp <-> SpringApp: "Interact"
