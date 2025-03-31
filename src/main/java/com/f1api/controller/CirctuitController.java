@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 @RequestMapping("/api/circuits")
 @RequiredArgsConstructor
-public class CirctuirController {
+public class CirctuitController {
 
     private final CircuitService circuitService;
 
