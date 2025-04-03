@@ -56,6 +56,8 @@ public class Constants {
     public static final String LAP_DATA_ENTITY_STRING = "LapDataEntity";
     public static final String CAR_MOTION_ENTITY_STRING = "CarMotionDataEntity";
     public static final String CAR_MOTION_EX_ENTITY_STRING = "PacketMotionExDataEntity";
+    public static final String CAR_SETUP_ENTITY_STRING = "PacketCarSetupDataEntity";
+    public static final String CAR_STATUS_ENTITY_STRING = "PacketCarStatusDataEntity";
 
     public static final String TIME = "t";
     public static final String DISTANCE = "d";

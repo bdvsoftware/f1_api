@@ -38,6 +38,6 @@ public class TelemetryController {
         @RequestParam String refEntity,
         @RequestParam String xAxis,
         @RequestParam String stint){
-        return this.telemetryService.findTelemetryData(yAxis, refEntity, xAxis, stint);
+        return this.telemetryService.findTelemetryData(yAxis, refEntity, stint);
     }
 }
