@@ -2,6 +2,7 @@ package com.f1api.util;
 
 import java.util.List;
 
+import com.f1api.entity.mongo.packet.carsetup.PacketCarSetupDataEntity;
 import com.f1api.entity.mongo.packet.cartelemetry.CarTelemetryDataEntity;
 import com.f1api.entity.mongo.packet.lapdata.LapDataEntity;
 import com.f1api.entity.mongo.packet.motion.CarMotionDataEntity;
@@ -43,12 +44,24 @@ public class Constants {
         public static final Class<?> LAP_DATA_ENTITY = LapDataEntity.class;
         public static final Class<?> CAR_MOTION_ENTITY = CarMotionDataEntity.class;
         public static final Class<?> CAR_MOTION_EX_ENTITY = PacketMotionExDataEntity.class;
+        public static final Class<?> CAR_STATUS_ENTITY = PacketCarSetupDataEntity.class;
+        public static final Class<?> CAR_SETUP_ENTITY = PacketCarSetupDataEntity.class;
         public static final List<Class<?>> NAME_LIST = List.of(
-            CAR_TELEMETRY_DATA_ENTITY, 
-            LAP_DATA_ENTITY, 
-            CAR_MOTION_ENTITY,
-            CAR_MOTION_EX_ENTITY);
+                CAR_TELEMETRY_DATA_ENTITY,
+                LAP_DATA_ENTITY,
+                CAR_MOTION_ENTITY,
+                CAR_MOTION_EX_ENTITY,
+                CAR_SETUP_ENTITY,
+                CAR_SETUP_ENTITY
+        );
     }
+
+    public static final List<String> EXCLUDED_FIELDS = List.of(
+            "id",
+            "carSetups",
+            "createdAt",
+            "stintName"
+    );
 
     public static final String PACKET_HEADER_ENTITY_STRING = "packetHeaderEntity";
 

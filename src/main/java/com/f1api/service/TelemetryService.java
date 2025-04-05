@@ -72,13 +72,16 @@ public class TelemetryService {
 
         Constants.Entities.NAME_LIST.forEach(c -> {
             Arrays.stream(c.getDeclaredFields())
-                    .filter(field -> !field.getName().equals(Constants.PACKET_HEADER_ENTITY_STRING))
+                    .filter(field -> !field.getName().equals(Constants.PACKET_HEADER_ENTITY_STRING) &&
+                            !Constants.EXCLUDED_FIELDS.contains(field.getName()))
                     .forEach(item -> {
                         yAxisFields.add(new YAxisDto(item.getName(), c.getSimpleName()));
                     });
         });
 
-        return yAxisFields;
+        return yAxisFields.stream()
+                .sorted(Comparator.comparing(YAxisDto::getName))
+                .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     public List<TelemetryDto> findTelemetryData(
