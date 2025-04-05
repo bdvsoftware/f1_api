@@ -1,12 +1,11 @@
 package com.f1api.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.f1api.dto.MultipleYAxisRequestDto;
+import org.springframework.web.bind.annotation.*;
 
 import com.f1api.dto.LatAccDTO;
 import com.f1api.dto.TelemetryDto;
@@ -32,12 +31,11 @@ public class TelemetryController {
         return this.telemetryService.getYAxisAtributes();
     }
 
-    @GetMapping("/stint-data")
-    public <T> List<TelemetryDto> getTelemetryData(
-        @RequestParam String yAxis,
-        @RequestParam String refEntity,
-        @RequestParam String xAxis,
-        @RequestParam String stint){
-        return this.telemetryService.findTelemetryData(yAxis, refEntity, stint);
+    @PostMapping("/stint-data")
+    public <T> Map<String, List<TelemetryDto>> getTelemetryData(
+            @RequestBody MultipleYAxisRequestDto body,
+            @RequestParam String xAxis,
+            @RequestParam String stint){
+        return this.telemetryService.findTelemetryData(body, xAxis, stint);
     }
 }

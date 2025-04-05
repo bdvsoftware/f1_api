@@ -2,10 +2,9 @@ package com.f1api.service;
 
 import java.util.*;
 import java.util.function.BiFunction;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-import com.f1api.kafka.messaging.packet.PacketReceived;
+import com.f1api.dto.MultipleYAxisRequestDto;
 import com.f1api.repository.mongo.packet.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -84,11 +83,15 @@ public class TelemetryService {
                 .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
-    public List<TelemetryDto> findTelemetryData(
-            String yAxis,
-            String refEntity,
+    public Map<String, List<TelemetryDto>> findTelemetryData(
+            MultipleYAxisRequestDto requestDto,
+            String xAxis,
             String stint) {
-        return this.findStintData(yAxis, refEntity, stint);
+        Map<String, List<TelemetryDto>> data = new HashMap<>();
+        requestDto.getYAxis().forEach(y -> {
+            data.put(y.getName(), this.findStintData(y.getName(), y.getRefEntity(), stint));
+        });
+        return data;
     }
 
     private <T> List<TelemetryDto> findStintData(String yAxis,
